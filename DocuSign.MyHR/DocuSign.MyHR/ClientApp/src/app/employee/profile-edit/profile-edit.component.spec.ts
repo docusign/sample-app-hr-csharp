@@ -4,10 +4,11 @@ import { EmployeeService } from '../employee.service'
 import { IUser } from '../shared/user.model'
 import { FormsModule, NgForm } from '@angular/forms'
 import { DatePipe } from '@angular/common'
-import { HttpClientTestingModule } from '@angular/common/http/testing'
+import { provideHttpClientTesting } from '@angular/common/http/testing'
 import { Observable, BehaviorSubject, of } from 'rxjs'
 import { By } from '@angular/platform-browser'
 import { NotificationService } from '../../shared/notification/notification.service'
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
 class EmployeeServiceStub {
     public saveUser(user: IUser) {
@@ -31,13 +32,15 @@ describe('ProfileEditComponent', () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [ProfileEditComponent],
-            imports: [FormsModule, HttpClientTestingModule],
-            providers: [
-                { provide: EmployeeService, useClass: EmployeeServiceStub },
-                { provide: NotificationService, useClass: NotificationServiceStub }
-            ]
-        }).compileComponents()
+    declarations: [ProfileEditComponent],
+    imports: [FormsModule],
+    providers: [
+        { provide: EmployeeService, useClass: EmployeeServiceStub },
+        { provide: NotificationService, useClass: NotificationServiceStub },
+        provideHttpClient(withInterceptorsFromDi()),
+        provideHttpClientTesting()
+    ]
+}).compileComponents()
     }))
 
     beforeEach(() => {
