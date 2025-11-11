@@ -7,7 +7,7 @@
   "WelcomeDescription": "Self-service Human Resources Portal",
   "LoginWithDocuSignAccountButton": "Log in with your Docusign account",
   "LoginWithTestAccountButton": "Log in with a test account",
-  "Note": "Note: This sample app is written in C#",
+  "Note": "Note: This sample app is written in C# and uses both ACG and JWT authentication.",
   "VSExtentionLink": "Get the Visual Studio Extension",
   "VSCodeExtentionLink": "Get the Visual Studio Code Extension",
   "InfoHeader": {
