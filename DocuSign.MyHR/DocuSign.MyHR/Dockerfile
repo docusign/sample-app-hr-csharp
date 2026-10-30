@@ -5,6 +5,8 @@ WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
+FROM node:26.12.1-bookworm-slim AS node
+
 # Base image for build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 
@@ -18,9 +20,8 @@ WORKDIR /src/DocuSign.MyHR
 RUN dotnet restore
 
 # Install Node.js and Angular CLI in the build stage
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | bash - && \
-    apt-get update && \
-    apt-get install -y nodejs && \
+COPY --from=node /usr/local/ /usr/local/
+RUN node --version && \
     npm install -g @angular/cli && \
     npm update
 

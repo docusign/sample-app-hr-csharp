@@ -36,7 +36,7 @@ The examples with templates were created using these Docusign APIs and features:
 * A Docusign integration key (a client ID) that is configured to use **JSON Web Token (JWT) Grant** authentication.
    You will need the **integration key** itself and its **RSA key pair**. To use this application, you must add your application's **Redirect URI** to your integration key. This [**video**](https://www.youtube.com/watch?v=GgDqa7-L0yo) demonstrates how to create an integration key (client ID) for a user application such as this example.
 * C# .NET Core version 3.1 or later
-* [Node.js](https://nodejs.org/) v10+
+* [Node.js](https://nodejs.org/) `22.23.4`, `24.22.1`, `26.12.1` or higher
 
 ### Installation steps
 **Manual**
